@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connexion</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1500&q=80');">
-    <div id="login-container" class="bg-white bg-opacity-90 rounded-3xl shadow-lg p-8 w-11/12 max-w-sm transition-all duration-500">
-      <h2 class="text-center text-2xl font-bold mb-6">CONNEXION</h2>
-      
-      <div id="select-role" class="flex flex-col space-y-2 mb-4 transition-all duration-500">
-        <label for="role" class="font-medium text-gray-700">Qui êtes-vous ?</label>
-        <select id="role" class="border rounded px-3 py-2">
-          <option value="">-- Choisir --</option>
-          <option value="parent">Parent d'élève</option>
-          <option value="enseignant">Enseignant</option>
-        </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80');">
+
+  <!-- Formulaire -->
+  <div id="form-container" class="bg-white bg-opacity-90 p-10 rounded-xl shadow-lg w-full max-w-md transition-all duration-700">
+    <h2 id="title" class="text-2xl font-bold text-blue-600 text-center mb-4 transition-all duration-700">CONNEXION</h2>
+
+    <label for="role" id="label-role" class="block text-gray-700 mb-1 text-center transition-all duration-500">Qui êtes-vous ?</label>
+    <select id="role" class="w-full p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option value="choisir">Choisir</option>
+      <option value="parent">Parent d'élève</option>
+      <option value="teacher">Enseignant</option>
+    </select>
+
+    <!-- Champs Parent -->
+    <div id="parentFields" class="hidden space-y-3">
+      <div>
+        <input id="parentMatricule" type="text" placeholder="Matricule de l'élève" class="input-field" />
+        <span class="error hidden">Champ obligatoire</span>
       </div>
-
-      <form id="login-form" class="hidden flex-col space-y-4 opacity-0 transition-opacity duration-500">
-        <!-- Champs pour parent -->
-        <div id="parent-fields" class="hidden space-y-4">
-          <input type="text" placeholder="Matricule de l’élève" class="input-field" required />
-          <input type="password" placeholder="Code secret" class="input-field" required />
-        </div>
-
-        <!-- Champs pour enseignant -->
-        <div id="enseignant-fields" class="hidden space-y-4">
-          <input type="text" placeholder="Matricule" class="input-field" required />
-          <input type="password" placeholder="Mot de passe" class="input-field" required />
-        </div>
-
-        <button type="submit" class="w-full py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Se connecter</button>
-      </form>
+      <div>
+        <input id="parentCode" type="password" placeholder="Code secret" class="input-field" />
+        <span class="error hidden">Champ obligatoire</span>
+      </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- Champs Enseignant -->
+    <div id="teacherFields" class="hidden space-y-3">
+      <div>
+        <input id="teacherMatricule" type="text" placeholder="Matricule" class="input-field" />
+        <span class="error hidden">Champ obligatoire</span>
+      </div>
+      <div>
+        <input id="teacherPassword" type="password" placeholder="Mot de passe" class="input-field" />
+        <span class="error hidden">Champ obligatoire</span>
+      </div>
+    </div>
+
+    <button id="submitBtn" class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">Se connecter</button>
+  </div>
+
+  <!-- Écran de chargement -->
+  <div id="loadingScreen" class="hidden fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+    <div class="loader"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>

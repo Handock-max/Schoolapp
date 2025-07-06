@@ -1,21 +1,47 @@
-/* Animation slide-up */
-.slide-up {
-  animation: slideUp 0.5s ease-out forwards;
+/* Animation formulaire */
+#form-container.moved {
+  transform: translateY(-50px);
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(0);
-  }
+#title.moved-right {
+  transform: translateX(30px);
+}
+
+#label-role.hidden {
+  display: none;
+}
+
+/* Spinner central */
+.loader {
+  border: 8px solid #e5e7eb;
+  border-top: 8px solid #3b82f6;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
   to {
-    transform: translateY(-50px);
+    transform: rotate(360deg);
   }
 }
 
-/* Classe partagée */
+/* Champs erreurs */
 .input-field {
   width: 100%;
-  padding: 0.75rem;
-  border: 1.5px solid #ccc;
-  border-radius: 0.75rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+}
+
+.input-error {
+  border-color: #dc2626;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
 }

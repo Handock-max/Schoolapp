@@ -1,0 +1,30 @@
+/* Fond image + flou du fond */
+body {
+  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1050&q=80') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.backdrop-blur-custom {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Animation fadeIn et fadeOut pour champs conditionnels */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-leave {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-leave-active {
+  opacity: 0;
+  transform: translateY(10px);
+}

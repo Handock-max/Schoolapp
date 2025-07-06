@@ -1,52 +1,42 @@
 <!DOCTYPE html>
-<html lang="fr" >
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Connexion animée</title>
-  <link href="style.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-
-  <form id="loginForm" class="login-form" novalidate>
-    <div id="selectContainer" class="select-container">
-      <h2 class="title">CONNECTION</h2>
-      <label for="role" class="label">Qui êtes-vous ? <span class="text-red-500">*</span></label>
-      <select id="role" name="role" required aria-describedby="roleError" class="select">
-        <option value="">-- Sélectionner --</option>
-        <option value="parent">Parent d'élève</option>
-        <option value="enseignant">Enseignant</option>
-      </select>
-      <p id="roleError" class="error hidden">Veuillez sélectionner votre rôle.</p>
-      <button type="button" id="btnNext" class="btn-next">Valider</button>
-    </div>
-
-    <div id="fieldsContainer" class="fields-container hidden">
-      <!-- Champs Parent d'élève -->
-      <div id="parentFields" class="fields hidden">
-        <label for="matriculeEleve" class="label">Matricule de l'élève <span class="text-red-500">*</span></label>
-        <input type="text" id="matriculeEleve" name="matriculeEleve" placeholder="EX: 123456" autocomplete="off" class="input" />
-
-        <label for="codeSecret" class="label">Code secret <span class="text-red-500">*</span></label>
-        <input type="password" id="codeSecret" name="codeSecret" placeholder="••••••••" autocomplete="off" class="input" />
-        <p id="parentError" class="error hidden">Veuillez remplir tous les champs.</p>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connexion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1500&q=80');">
+    <div id="login-container" class="bg-white bg-opacity-90 rounded-3xl shadow-lg p-8 w-11/12 max-w-sm transition-all duration-500">
+      <h2 class="text-center text-2xl font-bold mb-6">CONNEXION</h2>
+      
+      <div id="select-role" class="flex flex-col space-y-2 mb-4 transition-all duration-500">
+        <label for="role" class="font-medium text-gray-700">Qui êtes-vous ?</label>
+        <select id="role" class="border rounded px-3 py-2">
+          <option value="">-- Choisir --</option>
+          <option value="parent">Parent d'élève</option>
+          <option value="enseignant">Enseignant</option>
+        </select>
       </div>
 
-      <!-- Champs Enseignant -->
-      <div id="enseignantFields" class="fields hidden">
-        <label for="matriculeEnseignant" class="label">Matricule <span class="text-red-500">*</span></label>
-        <input type="text" id="matriculeEnseignant" name="matriculeEnseignant" placeholder="EX: ENS-001" autocomplete="off" class="input" />
+      <form id="login-form" class="hidden flex-col space-y-4 opacity-0 transition-opacity duration-500">
+        <!-- Champs pour parent -->
+        <div id="parent-fields" class="hidden space-y-4">
+          <input type="text" placeholder="Matricule de l’élève" class="input-field" required />
+          <input type="password" placeholder="Code secret" class="input-field" required />
+        </div>
 
-        <label for="motDePasse" class="label">Mot de passe <span class="text-red-500">*</span></label>
-        <input type="password" id="motDePasse" name="motDePasse" placeholder="••••••••" autocomplete="off" class="input" />
-        <p id="enseignantError" class="error hidden">Veuillez remplir tous les champs.</p>
-      </div>
+        <!-- Champs pour enseignant -->
+        <div id="enseignant-fields" class="hidden space-y-4">
+          <input type="text" placeholder="Matricule" class="input-field" required />
+          <input type="password" placeholder="Mot de passe" class="input-field" required />
+        </div>
 
-      <button type="submit" class="btn-submit">Se connecter</button>
+        <button type="submit" class="w-full py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Se connecter</button>
+      </form>
     </div>
-  </form>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

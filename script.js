@@ -1,58 +1,55 @@
+const form = document.getElementById('loginForm');
+const selectContainer = document.getElementById('selectContainer');
+const fieldsContainer = document.getElementById('fieldsContainer');
 const roleSelect = document.getElementById('role');
+const btnNext = document.getElementById('btnNext');
+
+const roleError = document.getElementById('roleError');
 const parentFields = document.getElementById('parentFields');
 const enseignantFields = document.getElementById('enseignantFields');
-const roleError = document.getElementById('roleError');
 const parentError = document.getElementById('parentError');
 const enseignantError = document.getElementById('enseignantError');
-const form = document.getElementById('loginForm');
 
-// Fonction pour afficher/masquer champs avec animation (transition max-height + opacity)
-function toggleFields() {
+btnNext.addEventListener('click', () => {
   const role = roleSelect.value;
+
+  // Reset erreurs
   roleError.classList.add('hidden');
 
+  if (!role) {
+    roleError.classList.remove('hidden');
+    return;
+  }
+
+  // Transition : déplacer select vers le haut, afficher champs liés
+  selectContainer.classList.add('move-up');
+  form.classList.add('expanded');
+
+  // Affiche container champs
+  fieldsContainer.classList.remove('hidden');
+
+  // Montre le bon groupe de champs
   if (role === 'parent') {
-    parentFields.style.maxHeight = parentFields.scrollHeight + "px";
-    parentFields.style.opacity = "1";
-
-    enseignantFields.style.maxHeight = "0";
-    enseignantFields.style.opacity = "0";
-    enseignantError.classList.add('hidden');
+    parentFields.classList.remove('hidden');
+    enseignantFields.classList.add('hidden');
+    parentError.classList.add('hidden');
   } else if (role === 'enseignant') {
-    enseignantFields.style.maxHeight = enseignantFields.scrollHeight + "px";
-    enseignantFields.style.opacity = "1";
-
-    parentFields.style.maxHeight = "0";
-    parentFields.style.opacity = "0";
-    parentError.classList.add('hidden');
-  } else {
-    parentFields.style.maxHeight = "0";
-    parentFields.style.opacity = "0";
-
-    enseignantFields.style.maxHeight = "0";
-    enseignantFields.style.opacity = "0";
-    parentError.classList.add('hidden');
+    enseignantFields.classList.remove('hidden');
+    parentFields.classList.add('hidden');
     enseignantError.classList.add('hidden');
   }
-}
+});
 
-roleSelect.addEventListener('change', toggleFields);
-
-// Validation simple au submit
-form.addEventListener('submit', function (e) {
+// Validation formulaire final au submit
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  let valid = true;
-
-  roleError.classList.add('hidden');
+  // Cacher erreurs
   parentError.classList.add('hidden');
   enseignantError.classList.add('hidden');
 
   const role = roleSelect.value;
-  if (!role) {
-    roleError.classList.remove('hidden');
-    valid = false;
-  }
+  let valid = true;
 
   if (role === 'parent') {
     const matriculeEleve = document.getElementById('matriculeEleve').value.trim();
@@ -62,9 +59,7 @@ form.addEventListener('submit', function (e) {
       parentError.classList.remove('hidden');
       valid = false;
     }
-  }
-
-  if (role === 'enseignant') {
+  } else if (role === 'enseignant') {
     const matriculeEnseignant = document.getElementById('matriculeEnseignant').value.trim();
     const motDePasse = document.getElementById('motDePasse').value.trim();
 
@@ -72,14 +67,19 @@ form.addEventListener('submit', function (e) {
       enseignantError.classList.remove('hidden');
       valid = false;
     }
+  } else {
+    valid = false;
   }
 
   if (valid) {
-    alert("Connexion réussie ! (Simulation)");
+    alert('Connexion réussie ! (Simulation)');
     form.reset();
-    toggleFields();
+
+    // Reset l'UI à l’état initial
+    selectContainer.classList.remove('move-up');
+    form.classList.remove('expanded');
+    fieldsContainer.classList.add('hidden');
+    parentFields.classList.add('hidden');
+    enseignantFields.classList.add('hidden');
   }
 });
-
-// Initialise l'affichage au chargement
-toggleFields();

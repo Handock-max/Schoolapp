@@ -1,160 +1,21 @@
-/* Fond + flou */
-body {
-  margin: 0;
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1050&q=80') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Animation slide-up */
+.slide-up {
+  animation: slideUp 0.5s ease-out forwards;
 }
 
-/* Formulaire : carte blanche floutée */
-.login-form {
-  background: rgba(255 255 255 / 0.85);
-  backdrop-filter: blur(8px);
-  border: 2px solid white;
-  border-radius: 2rem;
-  width: 320px;
-  max-width: 90vw;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
-  display: flex;
-  flex-direction: column;
-  /* Initialement centré verticalement */
-  justify-content: center;
-  height: 70vh;
-  overflow: hidden;
-  transition: height 0.6s ease;
-  position: relative;
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-60px);
+  }
 }
 
-/* Après validation on réduit la hauteur (faire remonter le select) */
-.login-form.expanded {
-  height: auto;
-  justify-content: flex-start;
-  padding-bottom: 2rem;
-}
-
-/* Container sélection (titre + select + btn) */
-.select-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  /* Animation d'entrée */
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.5s ease;
+/* Classe partagée */
+.input-field {
   width: 100%;
-}
-
-/* Lorsqu'on passe en haut, on remonte */
-.select-container.move-up {
-  align-items: flex-start;
-  transform: translateY(-2.5rem);
-}
-
-/* Container des champs à remplir */
-.fields-container {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* cacher par défaut */
-.fields-container.hidden {
-  display: none;
-}
-
-/* Champs Parent ou Enseignant cachés par défaut */
-.fields {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.fields.hidden {
-  display: none;
-}
-
-/* Titres */
-.title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1e293b; /* gris foncé */
-  margin: 0;
-  user-select: none;
-  text-align: center;
-  width: 100%;
-}
-
-/* Labels */
-.label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-/* Inputs */
-.input {
-  padding: 0.5rem 1rem;
-  border: 1.5px solid #94a3b8; /* gris clair */
-  border-radius: 0.75rem;
-  font-size: 1rem;
-  outline-offset: 2px;
-  transition: border-color 0.3s ease;
-}
-
-.input:focus {
-  border-color: #60a5fa; /* bleu ciel */
-  box-shadow: 0 0 0 3px rgb(96 165 250 / 0.4);
-}
-
-/* Select */
-.select {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 0.75rem;
-  border: 1.5px solid #94a3b8;
-  outline-offset: 2px;
-  cursor: pointer;
-}
-
-.select:focus {
-  border-color: #60a5fa;
-  box-shadow: 0 0 0 3px rgb(96 165 250 / 0.4);
-}
-
-/* Boutons */
-.btn-next,
-.btn-submit {
-  margin-top: 1rem;
-  padding: 0.6rem 1rem;
-  background-color: #60a5fa;
-  color: white;
-  font-weight: 600;
-  border: none;
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
-}
-
-.btn-next:hover,
-.btn-submit:hover {
-  background-color: #2563eb;
-}
-
-/* Messages d'erreur */
-.error {
-  color: #dc2626; /* rouge */
-  font-size: 0.85rem;
-  margin-top: 0.3rem;
-  user-select: none;
-}
-
-.hidden {
-  display: none !important;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
 }

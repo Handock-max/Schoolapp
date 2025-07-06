@@ -1,58 +1,50 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Connexion</title>
+  <title>Connexion animée</title>
   <link href="style.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen flex items-center justify-center px-4">
+<body>
 
-  <form id="loginForm" class="w-full max-w-xs h-[90vh] bg-white bg-opacity-80 border border-white rounded-3xl shadow-xl backdrop-blur-custom p-6 flex flex-col justify-between" novalidate>
-    
-    <!-- Titre -->
-    <div>
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">CONNECTION</h2>
-
-      <!-- Sélecteur rôle -->
-      <label for="role" class="block mb-2 text-sm font-medium text-gray-700 text-center">Qui êtes-vous ? <span class="text-red-500">*</span></label>
-      <select id="role" name="role" required aria-describedby="roleError" class="w-full mb-4 px-4 py-2 border rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+  <form id="loginForm" class="login-form" novalidate>
+    <div id="selectContainer" class="select-container">
+      <h2 class="title">CONNECTION</h2>
+      <label for="role" class="label">Qui êtes-vous ? <span class="text-red-500">*</span></label>
+      <select id="role" name="role" required aria-describedby="roleError" class="select">
         <option value="">-- Sélectionner --</option>
         <option value="parent">Parent d'élève</option>
         <option value="enseignant">Enseignant</option>
       </select>
-      <p id="roleError" class="text-red-600 text-sm hidden">Veuillez sélectionner votre rôle.</p>
+      <p id="roleError" class="error hidden">Veuillez sélectionner votre rôle.</p>
+      <button type="button" id="btnNext" class="btn-next">Valider</button>
     </div>
 
-    <!-- Champs Parent d'élève -->
-    <div id="parentFields" class="opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-      <label class="block mb-1 text-sm font-medium text-gray-700" for="matriculeEleve">Matricule de l'élève <span class="text-red-500">*</span></label>
-      <input type="text" id="matriculeEleve" name="matriculeEleve" placeholder="EX: 123456"
-        class="w-full mb-3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" autocomplete="off" />
+    <div id="fieldsContainer" class="fields-container hidden">
+      <!-- Champs Parent d'élève -->
+      <div id="parentFields" class="fields hidden">
+        <label for="matriculeEleve" class="label">Matricule de l'élève <span class="text-red-500">*</span></label>
+        <input type="text" id="matriculeEleve" name="matriculeEleve" placeholder="EX: 123456" autocomplete="off" class="input" />
 
-      <label class="block mb-1 text-sm font-medium text-gray-700" for="codeSecret">Code secret <span class="text-red-500">*</span></label>
-      <input type="password" id="codeSecret" name="codeSecret" placeholder="••••••••"
-        class="w-full mb-4 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" autocomplete="off" />
-      <p id="parentError" class="text-red-600 text-sm hidden mb-2">Veuillez remplir tous les champs.</p>
+        <label for="codeSecret" class="label">Code secret <span class="text-red-500">*</span></label>
+        <input type="password" id="codeSecret" name="codeSecret" placeholder="••••••••" autocomplete="off" class="input" />
+        <p id="parentError" class="error hidden">Veuillez remplir tous les champs.</p>
+      </div>
+
+      <!-- Champs Enseignant -->
+      <div id="enseignantFields" class="fields hidden">
+        <label for="matriculeEnseignant" class="label">Matricule <span class="text-red-500">*</span></label>
+        <input type="text" id="matriculeEnseignant" name="matriculeEnseignant" placeholder="EX: ENS-001" autocomplete="off" class="input" />
+
+        <label for="motDePasse" class="label">Mot de passe <span class="text-red-500">*</span></label>
+        <input type="password" id="motDePasse" name="motDePasse" placeholder="••••••••" autocomplete="off" class="input" />
+        <p id="enseignantError" class="error hidden">Veuillez remplir tous les champs.</p>
+      </div>
+
+      <button type="submit" class="btn-submit">Se connecter</button>
     </div>
-
-    <!-- Champs Enseignant -->
-    <div id="enseignantFields" class="opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-      <label class="block mb-1 text-sm font-medium text-gray-700" for="matriculeEnseignant">Matricule <span class="text-red-500">*</span></label>
-      <input type="text" id="matriculeEnseignant" name="matriculeEnseignant" placeholder="EX: ENS-001"
-        class="w-full mb-3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" autocomplete="off" />
-
-      <label class="block mb-1 text-sm font-medium text-gray-700" for="motDePasse">Mot de passe <span class="text-red-500">*</span></label>
-      <input type="password" id="motDePasse" name="motDePasse" placeholder="••••••••"
-        class="w-full mb-4 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" autocomplete="off" />
-      <p id="enseignantError" class="text-red-600 text-sm hidden mb-2">Veuillez remplir tous les champs.</p>
-    </div>
-
-    <!-- Bouton -->
-    <button type="submit" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out">
-      Se connecter
-    </button>
   </form>
 
   <script src="script.js"></script>

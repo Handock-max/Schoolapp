@@ -83,16 +83,22 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
     }
   }
 
-  if (valid) {
-    // Affiche l'écran de chargement
-    formContainer.classList.add("hidden");
-    loadingScreen.classList.remove("hidden");
+if (valid) {
+  formContainer.classList.add("hidden");
+  loadingScreen.classList.remove("hidden");
 
-    // Simule une connexion
-    setTimeout(() => {
-      alert("Connexion réussie !");
-      loadingScreen.classList.add("hidden");
-      // Redirection ou autre suite logique ici
-    }, 2000);
-  }
+  setTimeout(() => {
+    loadingScreen.classList.add("hidden");
+
+    if (role === "parent") {
+      // Redirection vers board_parent.html si rôle parent
+      window.location.href = "board_parent.html";
+    } else if (role === "teacher") {
+      // Message maintenance pour enseignant
+      alert("La connexion pour les enseignants est encore en maintenance. Merci de votre patience.");
+      formContainer.classList.remove("hidden"); // Re-affiche le formulaire
+    }
+  }, 2000);
+}
+
 });

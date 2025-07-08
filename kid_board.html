@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tableau de bord élève</title>
+  <link rel="stylesheet" href="kid_board.css" />
+</head>
+<body class="bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80');">
+  <header class="navbar">
+  <nav class="navbar">
+  <a href="board_parent.html" class="nav-link">
+    Retour
+  </a>
+  <a href="index.html" class="nav-link">
+    Déconnexion
+  </a>
+  </nav>
+  </header>
+
+  <main>
+    
+    <section class="card identite">
+      <h2>Identité</h2>
+      <div class="photo-container">
+        <img src="Profile.jpeg" alt="Photo élève" class="profile-img" />
+    </div>
+      <p><strong>NOM :</strong> AKASHI</p>
+      <p><strong>PRENOMS :</strong> MARTIN</p>
+      <p><strong>ÂGE :</strong> 15 ANS</p>
+      <p><strong>CLASSE :</strong> 6e A</p>
+      <p><strong>ADRESSE :</strong> LOME, TOGO</p>
+      <p><strong>TUTEUR 1 :</strong> Mme AKASHI CHRISTINE</p>
+      <p><strong>CONTACT TUTEUR 1 :</strong> +228 90000001</p>
+      <p><strong>TUTEUR 2 :</strong> M. AKASHI JEAN</p>
+      <p><strong>CONTACT TUTEUR 2 :</strong> +228 90000002</p>
+    </section>
+
+    <section class="card moyenne">
+      <h2>MOYENNE ACTUELLE</h2>
+      <div class="moyenne-actuelle">14.5</div>
+      <div class="moyenne-precedente">Trimestre précédent : 13.2</div>
+      <div class="fleche fleche-up">▲</div>
+    </section>
+
+    <section class="card radar">
+      <h2>Profil général</h2>
+      <canvas id="radarCanvas" width="300" height="300"></canvas>
+    </section>
+  </main>
+
+  <script src="kid_board.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 document.getElementById('card-mon-enfant').addEventListener('click', () => {
   // Redirection vers page Mon Enfant
-  window.location.href = 'mon_enfant.html'; // à créer
+  window.location.href = 'kid_board.html'; // à créer
 });
 
 document.getElementById('card-mes-rapports').addEventListener('click', () => {

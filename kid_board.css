@@ -91,6 +91,9 @@ main {
 
 .card.moyenne h2{
     position:absolute;
+    padding: 10px;
+    margin :10px;
+    right:10px;
     top : 0;
     left:0;
     font-family: "Montserrat", sans-serif;
@@ -99,7 +102,6 @@ main {
 
 
 .moyenne-actuelle {
-  
   font-size: 48px;
   font-weight: bold;
 }
